@@ -1,11 +1,353 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Youthwave — Youth Community Portal</title>
+  <meta name="description" content="Youthwave is a local youth community for events, creative projects, workshops and social activities.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site-header">
+    <div class="container site-header__inner">
+
+      <a class="logo" href="index.html">
+        <span class="logo__mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.2L22 12l-7.6 2.8L12 22l-2.4-7.2L2 12l7.6-2.8z"/></svg>
+        </span>
+        <span class="logo__text">Youthwave</span>
+      </a>
+
+      <button class="nav-toggle" type="button"
+              aria-label="Open navigation menu"
+              aria-expanded="false"
+              aria-controls="primary-nav">
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+      </button>
+
+      <nav class="nav" id="primary-nav" aria-label="Main navigation">
+        <ul class="nav__list">
+          <li><a class="nav__link" href="index.html" aria-current="page">Home</a></li>
+          <li><a class="nav__link" href="about.html">About</a></li>
+          <li><a class="nav__link" href="gallery.html">Gallery</a></li>
+          <li><a class="nav__link" href="news.html">News</a></li>
+          <li><a class="nav__link" href="video.html">Video</a></li>
+          <li><a class="nav__link" href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="container hero__grid">
+
+        <div class="hero__text">
+          <p class="eyebrow">Youth Community · Est. 2019</p>
+          <h1 class="hero__title">
+            Empowering young people to <span class="highlight">create</span>, connect, and contribute.
+          </h1>
+          <p class="hero__lead">
+            Youthwave is a local community where teenagers and young adults turn ideas into real
+            projects — through events, workshops, creative collaborations, and social action.
+          </p>
+
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="contact.html">Join the community</a>
+            <a class="btn btn--outline" href="gallery.html">Explore our work</a>
+          </div>
+
+          <ul class="hero__stats">
+            <li><strong>240+</strong><span>Active members</span></li>
+            <li><strong>35</strong><span>Events each year</span></li>
+            <li><strong>18</strong><span>Creative projects</span></li>
+          </ul>
+        </div>
+
+        <div class="hero__visual">
+          <img class="hero__image"
+               src="https://picsum.photos/seed/youthwave-hero/900/1100"
+               width="900" height="1100"
+               alt="Young people collaborating at a Youthwave community meetup">
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============ INTRO ============ -->
+    <section class="section section--muted">
+      <div class="container split">
+
+        <div class="split__media" data-reveal>
+          <img src="https://picsum.photos/seed/youthwave-intro/900/700"
+               width="900" height="700" loading="lazy"
+               alt="Members of the Youthwave community working together on a project">
+        </div>
+
+        <div class="split__body" data-reveal>
+          <p class="eyebrow">Who we are</p>
+          <h2>A space built by young people, for young people.</h2>
+          <p>
+            We started in 2019 as a small weekend gathering of students who wanted somewhere to
+            share ideas. Today Youthwave runs a year-round programme of events, workshops, and
+            creative collaborations open to anyone aged 15–25 in our area.
+          </p>
+          <p>
+            Everything we do is organised by volunteers. No experience is required — just show up,
+            bring your curiosity, and help shape what comes next.
+          </p>
+
+          <ul class="check-list">
+            <li>Free and low-cost activities for local youth</li>
+            <li>Mentorship from volunteers and local creators</li>
+            <li>Real projects you can put in a portfolio</li>
+          </ul>
+
+          <a class="btn btn--outline" href="about.html">More about us</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============ FEATURED ACTIVITIES ============ -->
+    <section class="section">
+      <div class="container">
+
+        <div class="section-head section-head--center" data-reveal>
+          <p class="eyebrow">What we do</p>
+          <h2>Featured activities</h2>
+          <p class="lead">Four programme areas that run all year round, led by members and supported by volunteers.</p>
+        </div>
+
+        <div class="grid grid--4">
+
+          <article class="feature-card" data-reveal>
+            <div class="feature-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 11h18"/>
+              </svg>
+            </div>
+            <h3>Community Events</h3>
+            <p>Open mics, seasonal festivals, and neighbourhood meetups organised by members.</p>
+          </article>
+
+          <article class="feature-card" data-reveal>
+            <div class="feature-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3a9 9 0 1 0 0 18c.8 0 1.5-.7 1.5-1.5 0-.4-.2-.8-.4-1.1-.3-.3-.4-.6-.4-1 0-.8.7-1.4 1.5-1.4H16a5 5 0 0 0 5-5c0-4.4-4-8-9-8Z"/>
+                <circle cx="7.5" cy="11.5" r="1"/><circle cx="11" cy="8" r="1"/><circle cx="15.5" cy="9.5" r="1"/>
+              </svg>
+            </div>
+            <h3>Creative Projects</h3>
+            <p>Collaborative art, zine-making, photography, and digital storytelling teams.</p>
+          </article>
+
+          <article class="feature-card" data-reveal>
+            <div class="feature-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.5.4.8 1 .8 1.6V16h5.4v-.5c0-.6.3-1.2.8-1.6A6 6 0 0 0 12 3Z"/>
+              </svg>
+            </div>
+            <h3>Youth Workshops</h3>
+            <p>Hands-on sessions on public speaking, design, coding, and career basics.</p>
+          </article>
+
+          <article class="feature-card" data-reveal>
+            <div class="feature-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 20v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+                <path d="M22 20v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            </div>
+            <h3>Social Activities</h3>
+            <p>Volunteering days, sports afternoons, and relaxed hangouts to make new friends.</p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ LATEST NEWS ============ -->
+    <section class="section section--muted">
+      <div class="container">
+
+        <div class="section-head section-head--split" data-reveal>
+          <div>
+            <p class="eyebrow">From the community</p>
+            <h2>Latest news</h2>
+          </div>
+          <a class="btn btn--outline btn--sm" href="news.html">All articles</a>
+        </div>
+
+        <div class="grid grid--3">
+
+          <article class="news-card" data-reveal>
+            <div class="news-card__media">
+              <img src="https://picsum.photos/seed/yw-news1/800/500"
+                   width="800" height="500" loading="lazy"
+                   alt="Young makers setting up stalls at the Youthwave creative market">
+            </div>
+            <div class="news-card__body">
+              <p class="news-card__meta">
+                <span class="tag">Events</span>
+                <time datetime="2025-04-12">12 April 2025</time>
+              </p>
+              <h3>Creative Market returns for its third season</h3>
+              <p>Over 60 young makers will take over Riverside Park with handmade goods, live music, and a zine swap table.</p>
+              <a class="news-card__link" href="news.html#article-1">Read more <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+
+          <article class="news-card" data-reveal>
+            <div class="news-card__media">
+              <img src="https://picsum.photos/seed/yw-news2/800/500"
+                   width="800" height="500" loading="lazy"
+                   alt="A large colourful mural painted on a wall by young artists">
+            </div>
+            <div class="news-card__body">
+              <p class="news-card__meta">
+                <span class="tag">Creative Projects</span>
+                <time datetime="2025-03-24">24 March 2025</time>
+              </p>
+              <h3>How 40 young artists turned an empty lot into a gallery</h3>
+              <p>A six-week collaboration between local artists and volunteers ended with a 30-metre community mural.</p>
+              <a class="news-card__link" href="news.html#article-2">Read more <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+
+          <article class="news-card" data-reveal>
+            <div class="news-card__media">
+              <img src="https://picsum.photos/seed/yw-news3/800/500"
+                   width="800" height="500" loading="lazy"
+                   alt="Teenagers attending a public speaking workshop in a bright room">
+            </div>
+            <div class="news-card__body">
+              <p class="news-card__meta">
+                <span class="tag">Workshops</span>
+                <time datetime="2025-03-05">5 March 2025</time>
+              </p>
+              <h3>New season of free weekend workshops announced</h3>
+              <p>Public speaking, photo editing, and basic web design sessions open for registration this month.</p>
+              <a class="news-card__link" href="news.html#article-3">Read more <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CTA ============ -->
+    <section class="section">
+      <div class="container">
+        <div class="cta" data-reveal>
+          <h2>Have an idea? Let's build it together.</h2>
+          <p>
+            Bring a project, a question, or just yourself. We will help you find the people and
+            the resources to get it moving.
+          </p>
+          <a class="btn btn--light" href="contact.html">Get in touch</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container">
+
+      <div class="footer__grid">
+
+        <div class="footer__brand">
+          <a class="logo logo--footer" href="index.html">
+            <span class="logo__mark" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.2L22 12l-7.6 2.8L12 22l-2.4-7.2L2 12l7.6-2.8z"/></svg>
+            </span>
+            <span class="logo__text">Youthwave</span>
+          </a>
+          <p>
+            A local youth community for events, creative projects, workshops, and social action.
+            Open to everyone aged 15–25.
+          </p>
+
+          <ul class="social">
+            <li>
+              <a href="#" aria-label="Youthwave on Instagram">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/>
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a href="#" aria-label="Youthwave on YouTube">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="5" width="20" height="14" rx="4"/><path d="M10 9l5 3-5 3z"/>
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a href="contact.html" aria-label="Email Youthwave">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="5" width="18" height="14" rx="3"/><path d="m3.5 7 8.5 6 8.5-6"/>
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer__title">Explore</h3>
+          <ul class="footer__list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About us</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="news.html">News</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer__title">Community</h3>
+          <ul class="footer__list">
+            <li><a href="video.html">Featured video</a></li>
+            <li><a href="contact.html">Join us</a></li>
+            <li><a href="contact.html">Volunteer</a></li>
+            <li><a href="news.html">Announcements</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer__title">Get in touch</h3>
+          <ul class="footer__list footer__list--contact">
+            <li>Northside Community Hall<br>Jl. Pemuda No. 24, Block C</li>
+            <li><a href="mailto:hello@youthwave.org">hello@youthwave.org</a></li>
+            <li><a href="tel:+62215550123">+62 21 555 0123</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer__bottom">
+        <p>© 2025 Youthwave Community. Student project for Web Content and Web Design.</p>
+        <p>Built with HTML, CSS &amp; vanilla JavaScript.</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
 </body>
 </html>

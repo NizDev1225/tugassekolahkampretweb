@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Northline Creative Agency</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'bg-dark': '#060807',
+                        'accent': '#c7ff39',
+                        'secondary-text': '#a1a1aa',
+                        'text-light': '#f2f4ef',
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #060807;
+            color: #f2f4ef;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: #c7ff39;
+            color: #061008;
+        }
+
+        ::-moz-selection {
+            background: #c7ff39;
+            color: #061008;
+        }
+
+        .noise {
+            background-image: 
+                linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,.02) 1px, transparent 1px);
+            background-size: 44px 44px;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(1.5rem);
+            transition: opacity 700ms cubic-bezier(.16,1,.3,1), transform 700ms cubic-bezier(.16,1,.3,1);
+        }
+
+        .reveal.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .faq-content {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 500ms cubic-bezier(.16,1,.3,1);
+        }
+
+        .faq-content.is-open {
+            grid-template-rows: 1fr;
+        }
+
+        .faq-content > div {
+            overflow: hidden;
+        }
+
+        .grayscale-hover {
+            filter: grayscale(100%);
+            transition: filter 500ms cubic-bezier(.16,1,.3,1);
+        }
+
+        .grayscale-hover:hover {
+            filter: grayscale(0%);
+        }
+
+        @media (max-width: 768px) {
+            body.menu-open {
+                overflow: hidden;
+            }
+        }
+    </style>
+</head>
+<body class="font-inter">
+    <!-- Header -->
+    <header id="header" class="fixed inset-x-0 top-0 z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-2 text-text-light hover:text-white transition-colors">
+                <svg viewBox="0 0 24 24" fill="none" class="w-6 h-6">
+                    <path d="M4 18V6l8 8 8-8v12" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"></path>
+                </svg>
+                <span class="text-xl font-semibold tracking-tight">NORTHLINE<span class="text-accent">.</span></span>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="#work" class="text-secondary-text hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-4 focus:ring-offset-[#060807] rounded">Work</a>
+                <a href="#services" class="text-secondary-text hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-4 focus:ring-offset-[#060807] rounded">Services</a>
+                <a href="#about" class="text-secondary-text hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-4 focus:ring-offset-[#060807] rounded">About</a>
+                <a href="#contact" class="text-secondary-text hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-4 focus:ring-offset-[#060807] rounded">Contact</a>
+            </nav>
+
+            <!-- Mobile Menu Toggle -->
+            <button id="mobile-menu-toggle" class="md:hidden w-11 h-11 grid place-items-center border border-white/15 rounded-lg hover:border-white/30 transition-colors">
+                <i data-lucide="menu" class="w-5 h-5 text-text-light"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden absolute inset-x-0 top-0 z-50 bg-bg-dark border-b border-white/10 md:hidden">
+        <div class="px-6 py-5 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-2 text-text-light">
+                <svg viewBox="0 0 24 24" fill="none" class="w-6 h-6">
+                    <path d="M4 18V6l8 8 8-8v12" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"></path>
+                </svg>
+                <span class="text-xl font-semibold tracking-tight">NORTHLINE<span class="text-accent">.</span></span>
+            </a>
+            <button id="mobile-menu-close" class="w-11 h-11 grid place-items-center border border-white/15 rounded-lg hover:border-white/30 transition-colors">
+                <i data-lucide="x" class="w-5 h-5 text-text-light"></i>
+            </button>
+        </div>
+        <nav class="px-6 py-8 flex flex-col gap-6 text-2xl">
+            <a href="#work" class="text-text-light hover:text-accent transition-colors">Work</a>
+            <a href="#services" class="text-text-light hover:text-accent transition-colors">Services</a>
+            <a href="#about" class="text-text-light hover:text-accent transition-colors">About</a>
+            <a href="#contact" class="text-text-light hover:text-accent transition-colors">Contact</a>
+        </nav>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center pt-24 pb-16">
+        <!-- Background layers -->
+        <div class="absolute inset-0 noise pointer-events-none"></div>
+        <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 68% 17%, rgba(82,188,76,.15), transparent 70%); height: 36rem;"></div>
+        
+        <!-- Content -->
+        <div class="relative max-w-7xl mx-auto px-6 w-full">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                <!-- Left Content -->
+                <div class="reveal">
+                    <p class="text-sm uppercase tracking-[0.18em] text-secondary-text mb-6">Independent design practice · Amsterdam</p>
+                    <h1 class="text-5xl md:text-6xl lg:text-7xl font-semibold leading-[1.05] mb-8">
+                        Digital work with a <span class="text-secondary-text">clear point of view.</span>
+                    </h1>
+                    <div class="flex items-center gap-6">
+                        <a href="#contact" class="inline-flex items-center gap-2 bg-accent text-[#071008] px-6 py-3 rounded-lg font-medium hover:bg-accent/90 transition-colors min-h-12">
+                            Start a project
+                            <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                        </a>
+                        <div class="text-secondary-text text-sm">01 / 07</div>
+                    </div>
+                </div>
+
+                <!-- Right Image Card -->
+                <div class="reveal relative group">
+                    <div class="relative aspect-[4/5] rounded-2xl overflow-hidden border border-white/10">
+                        <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/edf1ae4a-bdc2-4858-8003-d04cc2b9ff8f_3840w.png" 
+                             alt="Hero Object" 
+                             class="w-full h-full object-cover grayscale-hover transition-transform duration-700 group-hover:scale-103">
+                    </div>
+                    <!-- Floating Badge -->
+                    <div class="absolute -bottom-4 -left-4 bg-[#0c120d] border border-white/10 rounded-xl px-5 py-4 backdrop-blur-sm">
+                        <p class="text-xs text-secondary-text mb-1">Featured Project</p>
+                        <p class="text-sm font-medium">Aster House</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Border Info -->
+            <div class="mt-24 pt-8 border-t border-white/10 flex flex-wrap gap-8 text-sm text-secondary-text">
+                <div class="flex items-center gap-2">
+                    <i data-lucide="search" class="w-4 h-4"></i>
+                    <span>Brand Strategy</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <i data-lucide="pen-tool" class="w-4 h-4"></i>
+                    <span>Visual Identity</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <i data-lucide="panels-top-left" class="w-4 h-4"></i>
+                    <span>Digital Product</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="bg-[#0a0d0b] border-y border-white/10">
+        <div class="max-w-7xl mx-auto px-6 py-12">
+            <div class="grid sm:grid-cols-3 gap-8">
+                <div class="reveal text-center sm:text-left">
+                    <div class="text-4xl md:text-5xl font-semibold text-accent mb-2">12</div>
+                    <p class="text-secondary-text">Years of practice</p>
+                </div>
+                <div class="reveal text-center sm:text-left">
+                    <div class="text-4xl md:text-5xl font-semibold text-accent mb-2">34</div>
+                    <p class="text-secondary-text">Projects delivered</p>
+                </div>
+                <div class="reveal text-center sm:text-left">
+                    <div class="text-4xl md:text-5xl font-semibold text-accent mb-2">1:1</div>
+                    <p class="text-secondary-text">Direct collaboration</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Grid Section -->
+    <section id="work" class="py-24">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="reveal mb-16">
+                <h2 class="text-4xl md:text-5xl font-semibold mb-4">Selected work</h2>
+                <p class="text-secondary-text max-w-2xl">A curated selection of recent projects spanning brand identity, digital product, and strategic consulting.</p>
+            </div>
+
+            <!-- Featured Card -->
+            <div class="reveal mb-12">
+                <div class="group rounded-2xl overflow-hidden border border-white/10 hover:border-white/20 transition-colors">
+                    <div class="grid lg:grid-cols-[1.15fr_.85fr] gap-0">
+                        <div class="aspect-[4/3] lg:aspect-auto overflow-hidden">
+                            <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/f3a9e561-b7c1-45db-ab87-7eb9a9155beb_3840w.png" 
+                                 alt="Aster House" 
+                                 class="w-full h-full object-cover grayscale-hover transition-transform duration-700 group-hover:scale-103">
+                        </div>
+                        <div class="p-8 lg:p-12 flex flex-col justify-center bg-[#0a0d0b]">
+                            <span class="text-accent text-sm font-medium mb-3">Brand Identity</span>
+                            <h3 class="text-2xl md:text-3xl font-semibold mb-4">Aster House</h3>
+                            <p class="text-secondary-text mb-6">Complete visual identity and digital ecosystem for a contemporary architecture studio.</p>
+                            <a href="#" class="inline-flex items-center gap-2 text-sm font-medium hover:text-accent transition-colors">
+                                View case study
+                                <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Two Column Cards -->
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="reveal">
+                    <div class="group rounded-2xl overflow-hidden border border-white/10 hover:border-white/20 transition-colors">
+                        <div class="aspect-[4/3] overflow-hidden">
+                            <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/f8fd2334-59e6-46a0-b9cc-0722a9c55446_3840w.png" 
+                                 alt="Luma" 
+                                 class="w-full h-full object-cover grayscale-hover transition-transform duration-700 group-hover:scale-104">
+                        </div>
+                        <div class="p-6 bg-[#0a0d0b]">
+                            <span class="text-accent text-sm font-medium mb-2 block">Digital Product</span>
+                            <h3 class="text-xl font-semibold mb-2">Luma</h3>
+                            <p class="text-secondary-text text-sm">Product design and development for a wellness platform.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reveal">
+                    <div class="group rounded-2xl overflow-hidden border border-white/10 hover:border-white/20 transition-colors">
+                        <div class="aspect-[4/3] overflow-hidden">
+                            <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/7d12d817-8a38-4664-a772-5b5b8e1b7cca_3840w.png" 
+                                 alt="Field Notes" 
+                                 class="w-full h-full object-cover grayscale-hover transition-transform duration-700 group-hover:scale-104">
+                        </div>
+                        <div class="p-6 bg-[#0a0d0b]">
+                            <span class="text-accent text-sm font-medium mb-2 block">Brand Strategy</span>
+                            <h3 class="text-xl font-semibold mb-2">Field Notes</h3>
+                            <p class="text-secondary-text text-sm">Strategic positioning for an independent publishing house.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="reveal mb-16">
+                <h2 class="text-4xl md:text-5xl font-semibold mb-4">Services & Process</h2>
+                <p class="text-secondary-text max-w-2xl">We work across three core disciplines, each supported by a rigorous, transparent process.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-12 gap-8 mb-24">
+                <!-- Services -->
+                <div class="lg:col-span-5 reveal">
+                    <h3 class="text-2xl font-semibold mb-8">Capabilities</h3>
+                    <div class="space-y-6">
+                        <div class="group p-6 rounded-xl border border-white/10 hover:border-accent/30 transition-colors cursor-pointer">
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 rounded-lg bg-[#0a0d0b] border border-white/10 grid place-items-center group-hover:border-accent/50 transition-colors">
+                                    <i data-lucide="compass" class="w-5 h-5 text-secondary-text group-hover:text-accent transition-colors"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-semibold mb-2">Brand Strategy</h4>
+                                    <p class="text-secondary-text text-sm">Positioning, research, and narrative frameworks that clarify your direction.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="group p-6 rounded-xl border border-white/10 hover:border-accent/30 transition-colors cursor-pointer">
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 rounded-lg bg-[#0a0d0b] border border-white/10 grid place-items-center group-hover:border-accent/50 transition-colors">
+                                    <i data-lucide="shapes" class="w-5 h-5 text-secondary-text group-hover:text-accent transition-colors"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-semibold mb-2">Visual Identity</h4>
+                                    <p class="text-secondary-text text-sm">Logo systems, typography, color, and guidelines built for longevity.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="group p-6 rounded-xl border border-white/10 hover:border-accent/30 transition-colors cursor-pointer">
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 rounded-lg bg-[#0a0d0b] border border-white/10 grid place-items-center group-hover:border-accent/50 transition-colors">
+                                    <i data-lucide="panels-top-left" class="w-5 h-5 text-secondary-text group-hover:text-accent transition-colors"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-semibold mb-2">Digital Product</h4>
+                                    <p class="text-secondary-text text-sm">Interfaces and experiences that translate brand into interaction.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Process -->
+                <div class="lg:col-span-7 reveal">
+                    <h3 class="text-2xl font-semibold mb-8">How we work</h3>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="p-6 rounded-xl border border-white/15 hover:border-white/25 transition-colors">
+                            <div class="w-10 h-10 rounded-lg bg-[#0a0d0b] border border-white/10 grid place-items-center mb-4">
+                                <i data-lucide="search" class="w-4 h-4 text-accent"></i>
+                            </div>
+                            <p class="text-xs text-secondary-text mb-2">Step 01</p>
+                            <h4 class="font-semibold mb-2">Discover</h4>
+                            <p class="text-secondary-text text-sm">Deep research and stakeholder interviews to understand the landscape.</p>
+                        </div>
+
+                        <div class="p-6 rounded-xl border border-white/15 bg-[#0c120d] hover:border-accent/30 transition-colors">
+                            <div class="w-10 h-10 rounded-lg bg-[#0a0d0b] border border-accent/30 grid place-items-center mb-4">
+                                <i data-lucide="pen-tool" class="w-4 h-4 text-accent"></i>
+                            </div>
+                            <p class="text-xs text-accent mb-2">Step 02</p>
+                            <h4 class="font-semibold mb-2">Build the system</h4>
+                            <p class="text-secondary-text text-sm">Design systems and prototypes that scale across touchpoints.</p>
+                        </div>
+
+                        <div class="p-6 rounded-xl border border-white/15 hover:border-white/25 transition-colors">
+                            <div class="w-10 h-10 rounded-lg bg-[#0a0d0b] border border-white/10 grid place-items-center mb-4">
+                                <i data-lucide="rocket" class="w-4 h-4 text-accent"></i>
+                            </div>
+                            <p class="text-xs text-secondary-text mb-2">Step 03</p>
+                            <h4 class="font-semibold mb-2">Launch & iterate</h4>
+                            <p class="text-secondary-text text-sm">Deployment, measurement, and continuous improvement.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                <!-- Left: Portrait -->
+                <div class="reveal">
+                    <div class="relative rounded-2xl overflow-hidden border border-white/10">
+                        <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/f91d1b00-1830-4cb8-9e1b-fde333b129d1_3840w.png" 
+                             alt="Maya Chen" 
+                             class="w-full aspect-[4/5] object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-bg-dark/80 to-transparent"></div>
+                        <div class="absolute bottom-6 left-6">
+                            <p class="text-sm text-secondary-text mb-1">Founder & Creative Director</p>
+                            <p class="text-xl font-semibold">Maya Chen</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Content -->
+                <div class="reveal">
+                    <h2 class="text-4xl md:text-5xl font-semibold mb-6">Senior thinking, hands-on execution.</h2>
+                    <div class="space-y-6 text-secondary-text leading-relaxed">
+                        <p>Northline is a small, senior-led practice. We believe the best work comes from direct collaboration—no layers between you and the people doing the work.</p>
+                        <blockquote class="border-l border-accent pl-6 italic">
+                            "Design is not decoration. It's a way of thinking clearly about complex problems and making decisions visible."
+                        </blockquote>
+                        <p>With over a decade of experience across brand, product, and strategy, we bring clarity to ambitious projects where quality matters.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-24 border-t border-white/10">
+        <div class="max-w-3xl mx-auto px-6">
+            <div class="reveal mb-12">
+                <h2 class="text-4xl md:text-5xl font-semibold mb-4">Frequently asked</h2>
+                <p class="text-secondary-text">Common questions about how we work.</p>
+            </div>
+
+            <div class="space-y-4 reveal">
+                <div class="faq-item border border-white/10 rounded-xl overflow-hidden">
+                    <button class="faq-trigger w-full px-6 py-5 text-left flex items-center justify-between hover:bg-white/5 transition-colors">
+                        <span class="font-medium">What does a typical project timeline look like?</span>
+                        <i data-lucide="plus" class="w-5 h-5 text-secondary-text transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content">
+                        <div>
+                            <div class="px-6 pb-5 text-secondary-text">
+                                Most projects run 8-12 weeks from kickoff to launch. Complex systems or multi-phase engagements may extend to 16-20 weeks. We'll provide a detailed timeline during our initial proposal.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item border border-white/10 rounded-xl overflow-hidden">
+                    <button class="faq-trigger w-full px-6 py-5 text-left flex items-center justify-between hover:bg-white/5 transition-colors">
+                        <span class="font-medium">Do you work with early-stage startups?</span>
+                        <i data-lucide="plus" class="w-5 h-5 text-secondary-text transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content">
+                        <div>
+                            <div class="px-6 pb-5 text-secondary-text">
+                                Yes. We work with companies at all stages, from pre-seed startups needing foundational identity to established businesses seeking strategic repositioning. The key is alignment on ambition and timeline.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item border border-white/10 rounded-xl overflow-hidden">
+                    <button class="faq-trigger w-full px-6 py-5 text-left flex items-center justify-between hover:bg-white/5 transition-colors">
+                        <span class="font-medium">What is your pricing model?</span>
+                        <i data-lucide="plus" class="w-5 h-5 text-secondary-text transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content">
+                        <div>
+                            <div class="px-6 pb-5 text-secondary-text">
+                                We work on a project basis with clear deliverables and milestones. Pricing depends on scope, complexity, and timeline. We provide detailed proposals after our initial discovery call.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item border border-white/10 rounded-xl overflow-hidden">
+                    <button class="faq-trigger w-full px-6 py-5 text-left flex items-center justify-between hover:bg-white/5 transition-colors">
+                        <span class="font-medium">Can you work with our existing team?</span>
+                        <i data-lucide="plus" class="w-5 h-5 text-secondary-text transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content">
+                        <div>
+                            <div class="px-6 pb-5 text-secondary-text">
+                                Absolutely. We frequently collaborate with in-house teams, development partners, and other agencies. We're flexible and transparent about how we integrate with your existing workflow.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact CTA Section -->
+    <section id="contact" class="py-24 border-t border-white/10 relative overflow-hidden">
+        <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 50% 100%, rgba(82,188,76,.30), transparent 51%);"></div>
+        
+        <div class="relative max-w-3xl mx-auto px-6 text-center">
+            <div class="reveal">
+                <h2 class="text-4xl md:text-5xl lg:text-6xl font-semibold mb-6">Let's build something clear.</h2>
+                <p class="text-secondary-text text-lg mb-10 max-w-2xl mx-auto">We're selective about the projects we take on. If you're working on something ambitious, we'd love to hear about it.</p>
+                <a href="mailto:hello@northline.studio" class="inline-flex items-center gap-3 bg-accent text-[#071008] px-8 py-4 rounded-lg font-medium hover:bg-accent/90 transition-colors min-h-12">
+                    Start a conversation
+                    <i data-lucide="arrow-up-right" class="w-5 h-5"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div class="flex items-center gap-2">
+                    <svg viewBox="0 0 24 24" fill="none" class="w-6 h-6">
+                        <path d="M4 18V6l8 8 8-8v12" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"></path>
+                    </svg>
+                    <span class="text-xl font-semibold">NORTHLINE<span class="text-accent">.</span></span>
+                </div>
+                <div class="flex flex-wrap gap-6 justify-end text-sm text-secondary-text">
+                    <a href="#" class="hover:text-white transition-colors">Twitter</a>
+                    <a href="#" class="hover:text-white transition-colors">LinkedIn</a>
+                    <a href="#" class="hover:text-white transition-colors">Dribbble</a>
+                    <a href="mailto:hello@northline.studio" class="hover:text-white transition-colors">hello@northline.studio</a>
+                </div>
+            </div>
+            <div class="mt-12 pt-8 border-t border-white/10 flex flex-wrap justify-between items-center gap-4 text-sm text-secondary-text">
+                <p>© 2026 Northline Creative Agency. All rights reserved.</p>
+                <p>Amsterdam, Netherlands</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.classList.add('bg-[#080a09]/85', 'backdrop-blur-md', 'border-b', 'border-white/10');
+            } else {
+                header.classList.remove('bg-[#080a09]/85', 'backdrop-blur-md', 'border-b', 'border-white/10');
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const mobileMenuClose = document.getElementById('mobile-menu-close');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuToggle.addEventListener('click', () => {
+            mobileMenu.classList.remove('hidden');
+            document.body.classList.add('menu-open');
+        });
+
+        mobileMenuClose.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+            document.body.classList.remove('menu-open');
+        });
+
+        // Close mobile menu when clicking nav links
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                document.body.classList.remove('menu-open');
+            });
+        });
+
+        // Scroll reveal with IntersectionObserver
+        const revealElements = document.querySelectorAll('.reveal');
+        const observerOptions = {
+            threshold: 0.14,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        revealElements.forEach(el => observer.observe(el));
+
+        // FAQ accordion
+        const faqTriggers = document.querySelectorAll('.faq-trigger');
+        faqTriggers.forEach(trigger => {
+            trigger.addEventListener('click', () => {
+                const faqItem = trigger.closest('.faq-item');
+                const content = faqItem.querySelector('.faq-content');
+                const icon = trigger.querySelector('i');
+                const isOpen = content.classList.contains('is-open');
+
+                // Close all other FAQs
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    if (item !== faqItem) {
+                        item.querySelector('.faq-content').classList.remove('is-open');
+                        item.querySelector('i').style.transform = 'rotate(0deg)';
+                    }
+                });
+
+                // Toggle current FAQ
+                content.classList.toggle('is-open');
+                icon.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(45deg)';
+            });
+        });
+    </script>
+</body>
+</html>
